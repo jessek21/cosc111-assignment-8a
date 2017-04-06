@@ -9,6 +9,7 @@ package user;
  *
  * @author mochan
  */
+import java.util.Random;
 public class GuessGame {
     // Number that the user is trying to guess
     int num;
@@ -16,10 +17,12 @@ public class GuessGame {
     int guess;
     // Number of tries
     int tries;
+    String history = "";
     
     // Generate a new number for the user to guess
     public void generateNum() {        
-        num = 100;
+        Random rand = new Random();
+        num = rand.nextInt(1000) + 1;
     }
     
     // Getters and setters
@@ -38,16 +41,29 @@ public class GuessGame {
 
     public void setGuess(int guess) {
         this.guess = guess;
+        history = history + guess + ", ";
     }
 
     public int getTries() {
-        return tries;
+        return tries++ + 1;
     }
-
+    
+    public void resettries(){
+        tries = -1;
+    }
+    
     public void setTries(int tries) {
         this.tries = tries;
     }
-
+    
+    public String tryhistory() {
+        return history;
+    }
+    
+    public void resethistory(){
+        history = "";
+    }
+    
     
     
 }

@@ -32,6 +32,8 @@
                     if (guess.getNum() == guess.getGuess())
                     {
                         out.println("Correct! You have guessed correctly.");
+                        guess.resettries();
+                        guess.resethistory();
                     }
                     if (guess.getNum() < guess.getGuess())
                         out.println("Incorrect! Go lower.");
@@ -45,6 +47,8 @@
             <%
                 // Inform the user how many tries it has taken
                 out.println("Number of tries: " + guess.getTries());
+                out.println("<br>");
+                out.println("Your guess history is: " + guess.tryhistory());
             %>
         </h3> 
            
